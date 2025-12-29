@@ -1,3 +1,5 @@
+import { Icon } from "@/components/ui/icon";
+
 interface PricingCardProps {
   title: string;
   subtitle: string;
@@ -17,15 +19,17 @@ export default function PricingCard({
 }: PricingCardProps) {
   return (
     <div
-      className={`relative bg-white rounded-2xl p-8 w-[380px] shadow-lg transition ${
+      className={`relative bg-white rounded-2xl py-14 px-8 w-[380px] shadow-lg transition ${
         popular ? "border-2 border-indigo-500 scale-105" : ""
       }`}
     >
       {popular && (
-        <span className="absolute -top-4 right-6 bg-indigo-600 text-white px-3 py-1 rounded-full text-sm">
-          ✨ Most Popular
-        </span>
+      <span className="absolute top-0 right-0 bg-indigo-600 text-white px-4 py-1 rounded-bl-xl rounded-tr-2xl text-xs flex items-center gap-1">
+        <Icon name="Sparkles" className="w-4 h-4 text-white" />
+        Most Popular
+      </span>
       )}
+
 
       <h3 className="text-md">{title}</h3>
       <p className="text-gray-500 mt-1 text-sm">{subtitle}</p>
@@ -51,9 +55,17 @@ export default function PricingCard({
 
       <ul className="mt-3 space-y-5 text-sm text-gray-700">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-center gap-2">
-            ✅ {feature}
-          </li>
+        
+        <li key={index} className="flex items-center gap-3">
+        <span className="flex items-center justify-center w-5 h-5 rounded-full">
+          <Icon
+            name="Check"
+            className="w-5 h-5 text-indigo-600"
+            strokeWidth={3}
+          />
+        </span>
+        {feature}
+        </li>
         ))}
       </ul>
     </div>
